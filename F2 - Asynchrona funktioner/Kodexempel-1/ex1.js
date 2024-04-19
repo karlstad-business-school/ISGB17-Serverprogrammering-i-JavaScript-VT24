@@ -46,6 +46,7 @@ http.createServer(function (req,res) {
 
 //Steg 3
 /************************************************************* */
+/*
 exports.mySimpleWebServer = function() {
 http.createServer(function (req,res) {
 
@@ -73,6 +74,7 @@ http.createServer(function (req,res) {
 
 }).listen(3005);
 }
+*/
 /************************************************************* */
 
 
