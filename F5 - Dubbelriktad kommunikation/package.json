@@ -1,0 +1,15 @@
+{
+  "name": "f5---dubbelriktad-kommunikation",
+  "version": "2.0.18",
+  "description": "Nä",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nisse",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}
