@@ -50,6 +50,7 @@ io.on('connection', (socket)=> {
 
 
     socket.on('newBackground', function(data) {
+        console.log('bildid: ' + data.id);
         io.emit('newBackground', {'imageid': data.id, 'time': mymodule.getTimeStamp(), 'nickname': socket.nick});
     });
 
