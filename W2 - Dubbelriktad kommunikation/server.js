@@ -4,6 +4,7 @@ const app = express();
 const http = require('http').createServer(app);
 const cookieParser =  require('cookie-parser');
 const io = require('socket.io')(http);
+const mymodule =  require('./my-module');
 
 app.use(cookieParser());
 app.use(express.urlencoded({extended : true}));
@@ -38,4 +39,18 @@ app.post('/silverfisk', function(req,res) {
 
 io.on('connection', (socket)=> {
     console.log('Ny användare ansluten');
+
+    let kakstring = socket.handshake.headers.cookie;
+    let kakor = mymodule.parseCookies(kakstring);
+
+    if(kakor.nickname != null){
+        socket.nick = kakor.nickname;
+    }
+    console.log(kakor);
+
+
+    socket.on('newBackground', function(data) {
+        io.emit('newBackground', {'imageid': data.id, 'time': mymodule.getTimeStamp(), 'nickname': socket.nick});
+    });
+
 });
