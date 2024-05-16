@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const cookieParser =  require('cookie-parser');
-const io = require('socket.io');
+const io = require('socket.io')(http);
 
 app.use(cookieParser());
 app.use(express.urlencoded({extended : true}));
@@ -34,4 +34,8 @@ app.post('/silverfisk', function(req,res) {
         res.redirect('/silverfisk');
     }
 
+});
+
+io.on('connection', (socket)=> {
+    console.log('Ny användare ansluten');
 });
